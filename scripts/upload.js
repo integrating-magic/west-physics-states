@@ -1,8 +1,8 @@
 const open = require("open");
 const path = require("path");
 const server = "$";
-const file = "jsDev";
-const uploadScript = "UploadToHTML";
+const file = "West Physics";
+const uploadScript = "UploadToHTML_BubbleMap";
 
 const fileUrl = `fmp://${server}/${file}?script=${uploadScript}&param=`;
 
