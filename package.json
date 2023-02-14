@@ -19,5 +19,8 @@
     "open": "^8.2.1",
     "parcel": "^2.8.1",
     "prettier": "2.6.2"
+  },
+  "dependencies": {
+    "html2canvas": "^1.4.1"
   }
 }

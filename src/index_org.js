@@ -9,12 +9,6 @@ return delete city.size
 const obj = JSON.parse(json);
 const data = obj.data;
 
-//Print function
-function print() {
-
-  // Print a chart.
-  map.print('A5', true);
-}
   //Get unique states from FM data
 const uniqueZips = [...new Set(data.map(item => item.fieldData.PostalCode))];
 
@@ -53,25 +47,12 @@ map.title('Facility Count by State & Zip Code')
 map.minBubbleSize('1%').maxBubbleSize('5%')
 map.container('container');
 map.contextMenu().enabled(false);
-
 var zoomController = anychart.ui.zoom();
-
 
 zoomController.target(map);
 zoomController.render();
 
-  // // color states on map
-  // var mapSeries = map.choropleth(anychart.data.set(statesColors));
-  // mapSeries
-  //   .geoIdField('code_hasc')
-  //   .colorScale(
-  //     anychart.scales.linearColor('red', 'green', 'blue')
-      
-  //   )
-  //   .tooltip(false)
-  //   .stroke('1 #fff')
-  //   .hovered().fill('').stroke('')
-  //   ;
+
 
 // map.bubble(groupByZip);
 let series = map.bubble(groupByZip);
@@ -92,9 +73,7 @@ series.tooltip().titleFormat("{%name}")
 series.stroke("1 #fff")
 series.fill('#faea5a')
 series.selectionMode('none')
-function pdf() {
-  chart.saveAsPdf();
-};
+
 //This added the city labels
 let citiesSeries=map.bubble(cities)
 citiesSeries
@@ -238,7 +217,13 @@ window.loadBubbleMapWorkLoad = function (json) {
   statesTooltip.enabled(false)
   //This added the states labels
 
+  // color map
 
+
+const stateColorSeries = map.choropleth(statesColors);
+stateColorSeries.colorScale(colorScale);
+
+map.colorRange(true);
   map.draw()
   }
   )}
